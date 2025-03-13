@@ -66,6 +66,11 @@ d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/refs/heads/mast
   }).addTo(tectonicplates);  
 });
 tectonicplates.addTo(myMap)
+
+// create a variable to store the earthquake data layer 
+let earthquakes = new L.layerGroup();
+
+
 // Add a control to the map that will allow the user to change which layers are visible.
 let overlays = {
   "Tectonic Palates": tectonicplates
