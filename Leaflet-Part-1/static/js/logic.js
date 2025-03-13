@@ -26,31 +26,38 @@ var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
 	maxZoom: 17,
 	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 });
+
+// adding USGS Map
+var USGS_USImageryTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+	maxZoom: 20,
+	attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+});
 // Make a basement Object
 let basemaps = {
   "Default": defaultMap,
   "GrayScale": grayscale, 
   "Satellite Map": satellite,
-  "Topographic Map": OpenTopoMap
+  "Topographic Map": OpenTopoMap,
+  "USGS Topography": USGS_USImageryTopo
 };
 // Create the map object with center and zoom options.
 var myMap = L.map("map", {
   center: [36.7783, -119.4179],
   zoom: 3,
-  layers: [defaultMap]
+  layers: [defaultMap, grayscale, satellite, OpenTopoMap, USGS_USImageryTopo]
 });
 
 // Then add the 'basemap' tile layer to the map.
 defaultMap.addTo(myMap);
 
-// Add layer control 
+// Add a control to the map that will allow the user to change which layers are visible.
 L.control
   .layers(basemaps)
   .addTo(myMap);
 
-// OPTIONAL: Step 2
+
 // Create the layer groups, base maps, and overlays for our two sets of data, earthquakes and tectonic_plates.
-// Add a control to the map that will allow the user to change which layers are visible.
+
 
 
 // Make a request that retrieves the earthquake geoJSON data.
