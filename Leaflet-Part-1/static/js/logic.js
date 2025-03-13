@@ -4,7 +4,6 @@ var defaultMap = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
-// OPTIONAL: Step 2
 // Create the 'grayscale' tile layer as a second background of the map
 var grayscale =  L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}{r}.{ext}', {
 	minZoom: 0,
@@ -50,10 +49,6 @@ var myMap = L.map("map", {
 // Then add the 'basemap' tile layer to the map.
 defaultMap.addTo(myMap);
 
-// Add a control to the map that will allow the user to change which layers are visible.
-L.control
-  .layers(basemaps)
-  .addTo(myMap);
 
 // get the data from tectonic plate 
 // declare variable to hold the tectonic plates layer 
@@ -71,8 +66,15 @@ d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/refs/heads/mast
   }).addTo(tectonicplates);  
 });
 tectonicplates.addTo(myMap)
+// Add a control to the map that will allow the user to change which layers are visible.
+let overlays = {
+  "Tectonic Palates": tectonicplates
+};
+L.control
+  .layers(basemaps, overlays)
+  .addTo(myMap);
 
-
+//
 /*
 // Make a request that retrieves the earthquake geoJSON data.
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function (data) {
