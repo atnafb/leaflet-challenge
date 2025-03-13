@@ -55,10 +55,15 @@ L.control
   .layers(basemaps)
   .addTo(myMap);
 
+// get the data from tectonic plate 
+// declare variable to hold the tectonic plates layer 
+let tectonicplates = new L.layerGroup();
 
-// Create the layer groups, base maps, and overlays for our two sets of data, earthquakes and tectonic_plates.
-
-
+// call the api to get the info for the tectonic layer
+d3.json("https://github.com/fraxen/tectonicplates/blob/master/GeoJSON/PB2002_plates.json")
+.then(function(plateData){
+  
+})
 
 // Make a request that retrieves the earthquake geoJSON data.
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function (data) {
