@@ -12,7 +12,11 @@ var grayscale =  L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner/{z
 	attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	ext: 'png'
 });
-
+// Make a basement Object
+let basemaps = {
+  Default: defaultMap,
+  GrayScale: grayscale
+}
 // Create the map object with center and zoom options.
 var myMap = L.map("map", {
   center: [36.7783, -119.4179],
@@ -22,6 +26,12 @@ var myMap = L.map("map", {
 
 // Then add the 'basemap' tile layer to the map.
 defaultMap.addTo(myMap);
+
+// Add layer control 
+L.control
+  .layers(basemaps)
+  .addTo(myMap);
+
 // OPTIONAL: Step 2
 // Create the layer groups, base maps, and overlays for our two sets of data, earthquakes and tectonic_plates.
 // Add a control to the map that will allow the user to change which layers are visible.
