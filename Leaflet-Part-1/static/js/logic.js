@@ -21,7 +21,7 @@ var myMap = L.map("map", {
 });
 
 // Then add the 'basemap' tile layer to the map.
-geryscale.addTo(myMap);
+defaultMap.addTo(myMap);
 // OPTIONAL: Step 2
 // Create the layer groups, base maps, and overlays for our two sets of data, earthquakes and tectonic_plates.
 // Add a control to the map that will allow the user to change which layers are visible.
