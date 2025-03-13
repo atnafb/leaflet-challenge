@@ -44,7 +44,7 @@ let basemaps = {
 var myMap = L.map("map", {
   center: [36.7783, -119.4179],
   zoom: 3,
-  layers: [defaultMap, grayscale, satellite, OpenTopoMap, USGS_USImageryTopo]
+  layers: [defaultMap]
 });
 
 // Then add the 'basemap' tile layer to the map.
@@ -60,10 +60,13 @@ L.control
 let tectonicplates = new L.layerGroup();
 
 // call the api to get the info for the tectonic layer
-d3.json("https://github.com/fraxen/tectonicplates/blob/master/GeoJSON/PB2002_plates.json")
+d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/refs/heads/master/GeoJSON/PB2002_boundaries.json")
 .then(function(plateData){
-  
-})
+  console.log(plateData);
+});
+
+
+/*
 
 // Make a request that retrieves the earthquake geoJSON data.
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function (data) {
@@ -132,3 +135,4 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
   });
 });
+*/
