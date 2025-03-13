@@ -1,15 +1,27 @@
 // Create the 'basemap' tile layer that will be the background of our map.
-
+var defaultMap = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
 
 // OPTIONAL: Step 2
-// Create the 'street' tile layer as a second background of the map
-
+// Create the 'grayscale' tile layer as a second background of the map
+var grayscale =  L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}{r}.{ext}', {
+	minZoom: 0,
+	maxZoom: 20,
+	attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	ext: 'png'
+});
 
 // Create the map object with center and zoom options.
-
+var myMap = L.map("map", {
+  center: [36.7783, -119.4179],
+  zoom: 3,
+  layers: [defaultMap, grayscale]
+});
 
 // Then add the 'basemap' tile layer to the map.
-
+geryscale.addTo(myMap);
 // OPTIONAL: Step 2
 // Create the layer groups, base maps, and overlays for our two sets of data, earthquakes and tectonic_plates.
 // Add a control to the map that will allow the user to change which layers are visible.
