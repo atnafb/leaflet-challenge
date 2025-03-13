@@ -62,12 +62,18 @@ let tectonicplates = new L.layerGroup();
 // call the api to get the info for the tectonic layer
 d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/refs/heads/master/GeoJSON/PB2002_boundaries.json")
 .then(function(plateData){
-  console.log(plateData);
+  //console.log(plateData); // chekcing if the data load 
+  L.geoJson(plateData, {
+    style: {
+      color: "orange",
+      weight: 2
+    }
+  }).addTo(tectonicplates);  
 });
+tectonicplates.addTo(myMap)
 
 
 /*
-
 // Make a request that retrieves the earthquake geoJSON data.
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function (data) {
 
