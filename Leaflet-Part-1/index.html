@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Earthquake Map</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin="" />
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+
+<body>
+
+  <!-- title on the page -->
+  <div class="title-container">
+    <h1>Interactive Earthquake Map: Depth and Damage Insights</h1>
+  </div>
+  <div id="faq-sidebar">
+    <h2>FAQ</h2>
+    <ul>
+        <li><strong>What is Tectonic?</strong><p>Tectonic refers to the large-scale processes that shape the Earth's surface, including the movement of tectonic plates that cause earthquakes, volcanic activity, and mountain formation.</p></li>
+        <li><strong>What is Depth?</strong><p>Depth refers to how far below the Earth's surface the earthquake occurs, measured in kilometers (km).</p></li>
+        <li><strong>What is Magnitude?</strong><p>Magnitude is a measure of the energy released during an earthquake, often quantified using the Richter scale or Moment Magnitude scale.</p></li>
+        <li><strong>How does Depth affect Damage?</strong><p>The depth of an earthquake is crucial in determining the level of damage it causes. <b>In the legend:</b> earthquakes with <i>greater depths</i> (measured in kilometers) are represented by <i>darker colors</i> (e.g., red), which indicate deeper, less damaging earthquakes. This is because deep earthquakes release their energy farther below the Earth's surface, reducing the shaking intensity felt on the surface.<br> <br>
+
+        Conversely, earthquakes with <i>shallower depths</i> (represented by lighter colors such as green or yellow) tend to cause more damage. These earthquakes release their energy closer to the surface, causing more intense shaking and greater potential for surface damage. For example, earthquakes with depths between <i>0–10 km</i> (shown in green) are likely to cause significant damage, whereas earthquakes with depths above <i>90 km</i> (shown in red) generally cause less surface impact.</p>
+        </li>
+    </ul>
+    <p style="text-align: center; margin-top: 10px;">
+      <a href="https://www.usgs.gov/programs/earthquake-hazards/earthquakes" target="_blank" 
+         style="color: #0066cc; font-weight: bold; text-decoration: none;">
+          Read More About USGS
+      </a>
+  </p>
+  </div>
+
+  <!-- The div that holds our map -->
+  <div id="map"></div>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+  <!-- D3 JavaScript -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Our JavaScript -->
+  <script type="text/javascript" src="static/js/logic.js"></script>
+  <footer style="text-align: center; padding: 0px; background-color: rgba(0, 0, 0, 0.1); border-radius: 10px; width: 100%; position: fixed; bottom: 0; left: 0;"><p>&copy; 2025 Atnafu Ayalew. Check out my GitHub: 
+        <a href="https://github.com/atnafb" target="_blank" style="color: #0066cc;">atnafb</a>
+    </p>
+</footer>
+</body>
+
+</html>
