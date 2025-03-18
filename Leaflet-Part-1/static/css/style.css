@@ -60,3 +60,21 @@ html {
   margin: 5px 0;
   font-size: 14px;
 }
+/* Container for the title */
+.title-container {
+  text-align: center;
+  margin-top: 5px; 
+  padding: 2px; 
+  position: relative;
+  z-index: 10;
+}
+
+/* Styling for the title itself */
+.title-container h1 {
+  background-color: rgba(16, 4, 4, 0.1); 
+  padding: 10px; 
+  border-radius: 8px; 
+  display: inline-block; 
+  margin: 0;
+  width: auto;
+}
