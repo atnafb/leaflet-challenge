@@ -42,7 +42,7 @@ let basemaps = {
 // Create the map object with center and zoom options.
 var myMap = L.map("map", {
   center: [36.7783, -119.4179],
-  zoom: 3,
+  zoom: 5,
   layers: [defaultMap]
 });
 
@@ -105,8 +105,8 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   function dataStyle(feature)
   {
     return {
-      opacity: 1, 
-      fillOpacity: 1, 
+      opacity: 0.5, 
+      fillOpacity: 0.7, 
       fillColor: dataPointColor(feature.geometry.coordinates[2]), 
       color: "#000000", 
       radius: radiusSize(feature.properties.mag),
