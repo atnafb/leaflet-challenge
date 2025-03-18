@@ -23,3 +23,40 @@ html {
 .info.legend i {
   border-radius: 3px; 
 }
+
+/* FAQ Sidebar Styles */
+#faq-sidebar {
+  position: fixed;
+  top: 50px;  
+  left: 10px;  
+  width: 250px; 
+  background-color: rgba(255, 255, 255, 0.3); 
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); 
+  z-index: 1000;  
+  max-height: 90%; 
+  overflow-y: auto; 
+}
+
+#faq-sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#faq-sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#faq-sidebar li {
+  margin-bottom: 15px;
+}
+
+#faq-sidebar li strong {
+  font-weight: bold;
+}
+
+#faq-sidebar p {
+  margin: 5px 0;
+  font-size: 14px;
+}
