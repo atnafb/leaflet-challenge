@@ -153,4 +153,23 @@ let legend = L.control({position: 'bottomright'});
 // Legend content 
 legend.onAdd = function () {
   let div = L.DomUtil.create('div', 'info legend');
+  let depths = [-10, 10, 30, 50, 70, 90];
+  let colors = [
+        "#00ff00",  
+        "#66ff66",  
+        "#ccff33",  
+        "#ffcc00",  
+        "#ff6600",  
+        "#ff0000"  
+  ];
+// Loop through depth intervals to generate a label with a colored square for each
+for (let i = 0; i < depths.length; i++) {
+  div.innerHTML += 
+      '<i style="background:' + colors[i] + '; width: 18px; height: 18px; display: inline-block; margin-right: 5px;"></i> ' + 
+      depths[i] + (depths[i + 1] ? '&ndash;' + depths[i + 1] + ' km<br>' : '+ km');
+}
 
+return div;
+};
+// Add the legend to the map
+legend.addTo(myMap);
