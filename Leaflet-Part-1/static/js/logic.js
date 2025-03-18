@@ -123,6 +123,17 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     }, 
     // set the style for eachmarker
     style: dataStyle,
+    // add pipups 
+    onEachFeature: function(feature, layer){
+      var popupContent = `
+            <h3>Earthquake Details</h3>
+            <p><strong>Magnitude:</strong> ${feature.properties.mag}</p>
+            <p><strong>Location:</strong> ${feature.properties.place}</p>
+            <p><strong>Depth:</strong> ${feature.geometry.coordinates[2]} km</p>
+      `;
+      layer.bindPopup(popupContent);
+    }
+
   }).addTo(earthquakes)
 }
 
