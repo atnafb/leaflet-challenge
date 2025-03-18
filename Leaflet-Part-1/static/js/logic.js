@@ -150,4 +150,7 @@ L.control
 
 // Create a legend control 
 let legend = L.control({position: 'bottomright'});
+// Legend content 
+legend.onAdd = function () {
+  let div = L.DomUtil.create('div', 'info legend');
 
