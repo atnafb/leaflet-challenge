@@ -69,15 +69,69 @@ tectonicplates.addTo(myMap)
 
 // create a variable to store the earthquake data layer 
 let earthquakes = new L.layerGroup();
+// Function to determine the color of a data point based on earthquake depth
+/*function getColor(depth) {
+  return depth > 90 ? "#ff0000" :
+         depth > 70 ? "#ff6600" :
+         depth > 50 ? "#ffcc00" :
+         depth > 30 ? "#ccff33" :
+         depth > 10 ? "#66ff66" :
+                      "#00ff00";
+} */
 // Make a request that retrieves the earthquake geoJSON data.
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson")
 .then(
   function (earthquakeData){
   console.log(earthquakeData);
-});
+  // a function that chooses the color of the data point 
+  function dataPointColor(depth){
+    return depth > 90 ? "#ff0000" :
+           depth > 70 ? "#ff6600" :
+           depth > 50 ? "#ffcc00" :
+           depth > 30 ? "#ccff33" :
+           depth > 10 ? "#66ff66" :
+                        "#00ff00";
+  }
+
+  // make a funciton that determines the size of the radius 
+  function radiusSize(mag){
+    if (mag == 0)
+      return 1; // makes sure that a 0 mag earthquake shows up
+    else 
+    return mag * 5; // makes sure that the circle is pronounced in the map 
+  }
+
+  //add style to each datapoint 
+  function dataStyle(feature)
+  {
+    return {
+      opacity: 1, 
+      fillOpacity: 1, 
+      fillColor: dataPointColor(feature.geometry.coordinates[2]), 
+      color: "#000000", 
+      radius: radiusSize(feature.properties.mag),
+      weight: 0.5
+    }
+
+  }
+
+  // add the GeoJson data 
+  L.geoJson(earthquakeData, {
+    // make each feature a marker that is on the map
+    pointToLayer: function(feature, latLng) {
+      return L.circleMarker(latLng);
+    }, 
+    // set the style for eachmarker
+    style: dataStyle,
+  }).addTo(earthquakes)
+}
+
+);
+earthquakes.addTo(myMap);
 // Add a control to the map that will allow the user to change which layers are visible.
 let overlays = {
-  "Tectonic Palates": tectonicplates
+  "Tectonic Palates": tectonicplates,
+  "Earthquake Data": earthquakes
 };
 L.control
   .layers(basemaps, overlays)
