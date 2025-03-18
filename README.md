@@ -17,7 +17,7 @@ Learn more: [USGS Earthquake Hazards Program](https://www.usgs.gov/programs/eart
 - **FAQ Sidebar** explaining earthquake-related terms
 
 ## Deployment
-🔗 **Live Demo:** [Click Here to View the Project]()  
+🔗 **Live Demo:** [Click Here to View the Project](https://atnafb.github.io/usgs-leaflet/)  
 
 ## Technologies Used
 - **Leaflet.js** - For rendering the interactive map
