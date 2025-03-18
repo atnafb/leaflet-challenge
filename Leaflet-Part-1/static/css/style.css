@@ -77,3 +77,8 @@ body, html {
   margin: 0;
   width: auto;
 }
+/* Move zoom controls right outside the sidebar */
+.leaflet-top.leaflet-left {
+  left: 270px !important; 
+  top: 50px !important;  
+}

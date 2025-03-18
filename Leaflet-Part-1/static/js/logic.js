@@ -43,10 +43,13 @@ let basemaps = {
 var myMap = L.map("map", {
   center: [36.7783, -119.4179],
   zoom: 5,
-  layers: [defaultMap]
+  layers: [defaultMap],
+  zoomControl: false
 });
-
-// Then add the 'basemap' tile layer to the map.
+L.control.zoom({
+  position: "topleft" 
+}).addTo(myMap);
+// add the 'basemap' tile layer to the map.
 defaultMap.addTo(myMap);
 
 
